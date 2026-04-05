@@ -3,14 +3,13 @@
 Public block explorer for the Dytallix testnet.
 
 The live explorer is served from the main Dytallix site and exposes chain
-status, recent blocks, recent transactions, validator stats, wallet lookups,
-and QuantumVault anchor lookups.
+status, recent blocks, recent transactions, validator stats, and wallet
+lookups.
 
 ## Live Service
 
 - Explorer page: `https://dytallix.com/build/blockchain`
 - Blockchain API base: `https://dytallix.com/api/blockchain`
-- QuantumVault API base: `https://dytallix.com/api/quantumvault`
 - Verified against the live deployment on April 5, 2026
 
 There is no live public `explorer.dytallix.com` host. The supported explorer
@@ -29,11 +28,6 @@ The deployed explorer page currently calls these public endpoints:
 - `GET /api/blockchain/api/staking/validators`
 - `GET /api/blockchain/account/:address`
 - `GET /api/blockchain/balance/:address`
-- `GET /api/quantumvault/anchors/recent?limit=10`
-- `GET /api/quantumvault/anchors/lookup/:query`
-
-The UI merges blockchain transactions and QuantumVault anchor events into a
-single recent-activity feed.
 
 ## Search Inputs
 
@@ -44,8 +38,6 @@ The live search box accepts:
 - block heights
 - block hashes
 - `latest`
-- QuantumVault proof IDs
-- QuantumVault payload hashes
 
 ## Quick Checks
 
@@ -194,54 +186,6 @@ curl https://dytallix.com/api/blockchain/metrics
 
 This is a Prometheus text endpoint used by the explorer for throughput and node
 metrics.
-
-### Recent QuantumVault Anchors
-
-```bash
-curl 'https://dytallix.com/api/quantumvault/anchors/recent?limit=3'
-```
-
-Observed response on April 5, 2026:
-
-```json
-{
-  "anchors": [
-    {
-      "proofId": "ce269df4e7384784",
-      "txHash": "0xed631c9e2817fcf4005d54934548041e94c071a5fd019ba89807c2249e0a650f",
-      "payloadHash": "ce65d21e59e96f8441b8999a7400355607a16b324ec8cdf6886187ffa9d144bb",
-      "filename": "QuantumVault Technical Whitepaper.pdf.attestation.json",
-      "blockHeight": 219017,
-      "anchoredAt": "2026-03-28T18:21:03.758Z",
-      "status": "confirmed"
-    }
-  ]
-}
-```
-
-### QuantumVault Anchor Lookup
-
-```bash
-curl https://dytallix.com/api/quantumvault/anchors/lookup/ce269df4e7384784
-```
-
-Observed response on April 5, 2026:
-
-```json
-{
-  "found": true,
-  "type": "proofId",
-  "proofId": "ce269df4e7384784",
-  "txHash": "0xed631c9e2817fcf4005d54934548041e94c071a5fd019ba89807c2249e0a650f",
-  "payloadHash": "ce65d21e59e96f8441b8999a7400355607a16b324ec8cdf6886187ffa9d144bb",
-  "filename": "QuantumVault Technical Whitepaper.pdf.attestation.json",
-  "blockHeight": 219017,
-  "anchoredAt": "2026-03-28T18:21:03.758Z",
-  "status": "confirmed",
-  "onChainVerified": true,
-  "onChainStatus": "Success"
-}
-```
 
 ## Related Repositories
 
