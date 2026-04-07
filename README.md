@@ -6,14 +6,23 @@ The live explorer is served from the main Dytallix site and exposes chain
 status, recent blocks, recent transactions, validator stats, and wallet
 lookups.
 
+This repository currently documents the public explorer surface. It does not
+publish the deployed frontend source for `dytallix.com/build/blockchain`.
+
+## Repository Scope
+
+This is a docs-only service-surface repository. It exists to describe the live
+public explorer page and API shape, not to publish the deployed explorer
+frontend source.
+
 ## Live Service
 
 - Explorer page: `https://dytallix.com/build/blockchain`
 - Blockchain API base: `https://dytallix.com/api/blockchain`
 - Verified against the live deployment on April 5, 2026
 
-There is no live public `explorer.dytallix.com` host. The supported explorer
-page lives at `dytallix.com/build/blockchain`.
+The supported explorer page lives at `dytallix.com/build/blockchain` on the
+main site.
 
 ## What The Explorer Uses
 
@@ -194,6 +203,9 @@ metrics.
 - Node: https://github.com/DytallixHQ/dytallix-node
 - Docs: https://github.com/DytallixHQ/dytallix-docs
 - Org profile: https://github.com/DytallixHQ
+
+For canonical public integration guidance, start with the docs repo:
+https://github.com/DytallixHQ/dytallix-docs
 
 ## Support
 
