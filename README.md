@@ -1,6 +1,8 @@
 # Dytallix Explorer
 
-Public block explorer for the Dytallix testnet.
+Public explorer surface for the Dytallix testnet.
+
+Keypair, faucet, transfer, and basic contract lifecycle are available for experimentation on the public testnet. Staking, governance, and some advanced or operator paths are not yet production-complete.
 
 The live explorer is served from the main Dytallix site and exposes chain
 status, recent blocks, recent transactions, validator stats, and wallet
@@ -8,6 +10,12 @@ lookups.
 
 This repository currently documents the public explorer surface. It does not
 publish the deployed frontend source for `dytallix.com/build/blockchain`.
+The live explorer UI is currently implemented inside the unpublished main
+website frontend source tree, not in this repo.
+
+The local source-of-truth file for this docs-only repo is `public-surface.json`.
+It captures the live explorer page URL, the read APIs it uses, and the current
+validator feed shape so README drift is caught in CI.
 
 ## Repository Scope
 
@@ -15,11 +23,16 @@ This is a docs-only service-surface repository. It exists to describe the live
 public explorer page and API shape, not to publish the deployed explorer
 frontend source.
 
+It is not sufficient on its own to rebuild, audit, or redeploy the live
+explorer frontend. Until the hosted explorer frontend source is published in a
+dedicated public repo, treat this repository as an honest documentation
+boundary rather than a production-source repository.
+
 ## Live Service
 
 - Explorer page: `https://dytallix.com/build/blockchain`
 - Blockchain API base: `https://dytallix.com/api/blockchain`
-- Verified against the live deployment on April 5, 2026
+- Verified against the live deployment on April 13, 2026
 
 The supported explorer page lives at `dytallix.com/build/blockchain` on the
 main site.
@@ -56,7 +69,7 @@ The live search box accepts:
 curl https://dytallix.com/api/blockchain/status
 ```
 
-Observed response on April 5, 2026:
+Observed response on April 13, 2026:
 
 ```json
 {
@@ -87,7 +100,7 @@ Observed response on April 5, 2026:
 curl 'https://dytallix.com/api/blockchain/blocks?limit=2'
 ```
 
-Observed response excerpt on April 5, 2026:
+Observed response excerpt on April 13, 2026:
 
 ```json
 {
@@ -185,7 +198,37 @@ Observed balance response on April 5, 2026:
 curl https://dytallix.com/api/blockchain/api/staking/validators
 ```
 
-The live response currently reports `4` active validators.
+The live response currently reports a single current proposer entry sourced from
+validator secrets. This is intentionally different from the older placeholder
+four-validator shape.
+
+Observed response excerpt on April 13, 2026:
+
+```json
+{
+  "active_validators": 1,
+  "total_validators": 1,
+  "validators": [
+    {
+      "address": "dytallix1cadh4gx44m3gj5wuu23up5qhgwp52cxq3mv8499xv09ne4q95hdqehq3z6",
+      "moniker": "Current Proposer",
+      "status": "operator-preview",
+      "source": "validator_secrets"
+    }
+  ]
+}
+```
+
+### Runtime Capability Contract
+
+Compatible node deployments now expose a machine-readable public contract at:
+
+```bash
+curl https://dytallix.com/api/capabilities
+```
+
+Explorer-adjacent integrations should prefer that contract over scraping README
+copy for staking/governance/public-write assumptions.
 
 ### Metrics Feed
 
@@ -206,6 +249,10 @@ metrics.
 
 For canonical public integration guidance, start with the docs repo:
 https://github.com/DytallixHQ/dytallix-docs
+
+Do not infer from those links that the live explorer frontend source or the
+main website frontend source is already published. This repository only covers
+the explorer surface description.
 
 ## Support
 
