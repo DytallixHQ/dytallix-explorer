@@ -10,9 +10,7 @@ lookups.
 
 This repository currently documents the public explorer surface. It does not
 publish the deployed frontend source for `dytallix.com/build/blockchain`.
-The canonical deployed explorer frontend source is now public in the
-`dytallix-website` repository under `src/pages/build/blockchain.tsx`, not in
-this repo.
+The hosted explorer frontend source is not currently published in a separate public repo.
 
 The local source-of-truth file for this docs-only repo is `public-surface.json`.
 It captures the live explorer page URL, the read APIs it uses, and the current
@@ -26,7 +24,7 @@ frontend source.
 
 It is not sufficient on its own to rebuild, audit, or redeploy the live
 explorer frontend. Treat this repository as an honest documentation boundary,
-and use `dytallix-website` as the canonical frontend source repository.
+not as the canonical frontend source repository.
 
 ## Live Service
 
@@ -251,7 +249,8 @@ For canonical public integration guidance, start with the docs repo:
 https://github.com/DytallixHQ/dytallix-docs
 
 This repository only covers the explorer surface description. The canonical
-frontend source for the hosted explorer page lives in `dytallix-website`.
+frontend source for the hosted explorer page is not currently published in a
+separate public repo.
 
 ## Support
 

@@ -34,11 +34,11 @@ def require(condition: bool, message: str) -> None:
 def main() -> int:
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    readme_lower = readme.lower()
 
     require(config["canonicalStatement"] in readme, "Missing canonical statement in README.md")
     require("docs-only service-surface repository" in readme, "README.md must classify the repo as docs-only")
-    require("`dytallix-website` repository" in readme, "README.md must point to dytallix-website as the canonical frontend source repo")
-    require("src/pages/build/blockchain.tsx" in readme, "README.md must point to the explorer source path in dytallix-website")
+    require("hosted explorer frontend source is not currently published in a separate public repo" in readme_lower, "README.md must describe the current unpublished frontend-source boundary")
     require(CONFIG_PATH.name in readme, "README.md must reference public-surface.json")
 
     payload = open_json(config["explorer"]["validatorFeed"]["url"])
