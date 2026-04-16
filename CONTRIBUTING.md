@@ -1,4 +1,4 @@
-# Contributing To dytallix-explorer
+# Contributing to dytallix-explorer
 
 This repository is a docs-only service-surface map for the live explorer.
 
