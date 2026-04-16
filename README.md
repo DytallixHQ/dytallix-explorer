@@ -29,7 +29,7 @@ not as the canonical frontend source repository.
 ## Contributing
 
 Keep changes limited to the documented explorer surface. If the live API or
-runtime behavior changed, update `public-surface.json`, the README evidence, and
+runtime behavior changed, update `public-surface.json`, the README examples, and
 run `python3 scripts/check_public_alignment.py` before opening a PR.
 
 ## Live Service
