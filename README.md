@@ -26,6 +26,12 @@ It is not sufficient on its own to rebuild, audit, or redeploy the live
 explorer frontend. Treat this repository as an honest documentation boundary,
 not as the canonical frontend source repository.
 
+## Contributing
+
+Keep changes limited to the documented explorer surface. If the live API or
+runtime behavior changed, update `public-surface.json`, the README evidence, and
+run `python3 scripts/check_public_alignment.py` before opening a PR.
+
 ## Live Service
 
 - Explorer page: `https://dytallix.com/build/blockchain`
