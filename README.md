@@ -1,6 +1,7 @@
 # Dytallix Explorer
 
-Public explorer surface for the Dytallix testnet.
+Public explorer surface map and endpoint documentation for the Dytallix
+testnet.
 
 Keypair, faucet, transfer, and basic contract lifecycle are available for experimentation on the public testnet. Staking, governance, and some advanced or operator paths are not yet production-complete.
 
@@ -25,6 +26,11 @@ frontend source.
 It is not sufficient on its own to rebuild, audit, or redeploy the live
 explorer frontend. Treat this repository as an honest documentation boundary,
 not as the canonical frontend source repository.
+
+## Prerequisites
+
+No build toolchain is required to read or use this repository. If you want to
+run the local alignment check, use Python 3 for `scripts/check_public_alignment.py`.
 
 ## Contributing
 
